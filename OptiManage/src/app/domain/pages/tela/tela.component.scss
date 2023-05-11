@@ -1,0 +1,179 @@
+.container {
+	height: calc(100%);
+	background-color: rgb(236, 241, 255);
+	padding-top: 20px;
+  }
+  
+  .sidenav {
+	transition: 0.5s;
+	background-color: rgb(229, 81, 27);
+	width: 230px;
+	border: none;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  mat-drawer-container.container {
+	padding-top: 0px;
+  }
+  
+  mat-nav-list.last {
+	position: absolute;
+	bottom: 5px;
+	width: 230px;
+  }
+  
+  mat-drawer-content {
+	padding-left: 30px;
+	padding-right: 30px;
+  }
+  
+  .pageContent {
+	border-radius: 10px;
+	background-color: white;
+  }
+  
+  .logo {
+	background-color: white;
+	height: 9.3em;
+  }
+  
+  p {
+	font-weight: 500;
+	font-size: 20px;
+  }
+  
+  a {
+	p {
+	  display: inline;
+	  vertical-align: super;
+	  padding-left: 0.5em;
+	}
+	img {
+		height: 33px;
+		display: inline;
+		filter: invert(1);
+	}
+	vertical-align: middle;
+  }
+  
+  ::ng-deep .menu {
+	background-color: rgb(229, 81, 27);
+	position: absolute;
+	left: 9em;
+	top: -3em;
+  }
+  
+  .vl {
+	border-left: 2px solid #000000;
+	height: 87%;
+	position: absolute;
+	margin: 5px 7px;
+  }
+  
+  p {
+	color: white;
+  }
+  
+  
+  section {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .spacer {
+	flex: 1;
+  }
+  
+  .last a p {
+	margin-left: 30px;
+  }
+  
+  header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: calc(100% - 20px);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 10px;
+	height: 50px;
+	background-color: rgb(229, 81, 27);
+	border-radius: 0px 0px 20px 30px;
+	color: white;
+	font-size: 20px;
+	font-weight: 500;
+	z-index: 9999;
+  }
+  
+  .header button mat-icon {
+	scale: 1.5;
+  }
+  
+  ::-webkit-scrollbar {
+	width: 8px;
+  
+	/* largura da barra */
+  }
+  
+  ::-webkit-scrollbar-track {
+	background: #f1f1f1;
+  
+	/* cor de fundo da barra */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	background: #ccc;
+  
+	/* cor da barra de rolagem */
+	border-radius: 10px;
+  
+	/* borda da barra de rolagem */
+  
+	&:hover {
+	  background: #555;
+	}
+  }
+  
+  @media only screen and (max-height: 542px) {
+	mat-nav-list.last {
+	  position: inherit;
+	  padding-top: 0px;
+	}
+  
+	mat-drawer-container ::ng-deep mat-nav-list:first-child {
+	  padding-bottom: 0px;
+	}
+  }
+  
+  @media screen and (max-width: 1002px) {
+	mat-drawer-content h1.tituloPagina {
+	  display: flex;
+	  justify-content: center;
+	  background-color: rgb(255 255 255);
+	  border-radius: 5px 5px 15px 15px;
+	  border: 1px solid rgba(0, 0, 0, 0.09);
+	  padding-top: 0px;
+	  margin-top: 50px;
+	}
+  
+	header.underHeader {
+	  z-index: 1;
+	  background-color: rgb(255, 255, 255);
+	  position: absolute;
+	}
+  
+	section.pageContent {
+	  position: absolute;
+	  width: 100%;
+	  left: 0;
+	}
+  
+	::-webkit-scrollbar-track {
+	  margin-top: 40px;
+  
+	  /* borda da barra de rolagem */
+	}
+  }
+  

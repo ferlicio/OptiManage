@@ -1,0 +1,140 @@
+*{
+    font-size: 14px;
+}
+
+section.geral {
+    padding: 20px;
+}
+
+section.pageContent {
+    margin-top: 15px;
+    padding: 20px;
+    background-color: #f2f4ff;
+    border-radius: 5px;
+}
+
+mat-divider {
+    border-width: 1px;
+}
+
+form.tableSearch {
+    display: flex;
+    justify-content: space-between;
+    div.filterForTable {
+        display: flex;
+        button {
+            border-radius: 0px 21px 21px 0px;
+            padding: 0px;
+            scale: 0.8;
+            margin-left: -5px;
+            margin-top: -2px;
+        }
+    }
+    button.buttonFilter {
+        display: none;
+        mat-icon {
+            font-size: 25px;
+        }
+    }
+}
+
+
+button.add.mobile {
+    display: none;
+}
+
+button.add.mobile mat-icon {
+    font-size: 30px;
+}
+
+::ng-deep {
+    div.filterForTable {
+        button.mdc-button  {
+            min-width: 44px;
+        }
+    }
+    button.mat-mdc-menu-item {
+        span.mdc-list-item__primary-text{
+            span {
+                mat-icon {
+                    margin-right: 0px;
+                    display: contents;
+                }
+            }
+        }
+    }
+    button.limparFiltros {
+        background: rgba(0,0,0,0.05) !important;
+        span{
+            font-weight: 500 !important;
+        }
+    }
+}
+
+
+::ng-deep {
+    button.add{
+        background-color: rgb(62, 158, 55) !important;
+    } 
+    .mat-mdc-menu-content {
+        padding: 0px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    section.geral > button.add:not(.mobile) {
+        display: none
+    }
+    section.geral button.add.mobile {
+        display: flex;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index: 100;
+    }
+    button.add.mobile mat-icon {
+        display: contents;
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    section.geral {
+        padding: 20px 0px;
+        animation-name: resize;
+        animation-duration: 0.5s;
+    }
+    @keyframes resize1 {
+        from { padding: 20px 10px; }
+        to { padding: 20px 0px; }
+    }
+    section.geral > button.add {
+        margin-left: 10px;
+    }
+    form.tableSearch {
+        div.filterForTable {
+            display: none;
+        }
+        button.buttonFilter {
+            display: block;
+        }
+    }
+}
+
+@media only screen and (max-width: 525px) {
+    section.pageContent {
+        padding: 20px 0px;
+    }
+    section.pageContent > div.tableSearch {
+        padding: 0px 20px
+    }
+    button.buttonFilter {
+        margin-left: 10px;
+    }
+}
+
+
+
+
+
+

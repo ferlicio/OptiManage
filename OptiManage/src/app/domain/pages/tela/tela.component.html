@@ -1,0 +1,59 @@
+<mat-drawer-container class="container">
+    <mat-drawer [mode]="mode" [opened]="opened" class="sidenav" (closed)="opened=false">
+        <div class="logo">
+            <img src="../../../../assets/Logo-Roleman.png" alt="Logo Roleman" style="width: 82%; display: flex; margin: auto; " routerLink="/">
+        </div>
+        <p class="status" style="padding-left: 2.52em;">Status</p>
+        <hr style="height: 10px; background-color: aliceblue;">
+    <section>
+        <mat-nav-list>
+            <a mat-list-item routerLink="/clientes"><img src="../../../../assets/clientes.png" alt=""><p>Clientes</p></a>
+            <a mat-list-item routerLink="/fornecedores" style="padding-left: 5px;"><img src="../../../../assets/fornecedor.png" alt="" ><p>Fornecedores</p></a>
+            <a mat-list-item routerLink="/servicos"><img src="../../../../assets/services.png" alt=""><p>Serviços</p></a>
+            <a mat-list-item [matMenuTriggerFor]="menuVendas"><p style="margin-left: 30px">Vendas</p></a>
+            <mat-menu #menuVendas="matMenu" class="menu">
+                <div class="vl"></div>
+                <a
+                mat-menu-item
+                routerLink="/orçamentos"
+                >Orçamentos</a>
+                <a
+                mat-menu-item
+                routerLink="/pedidos"
+                >Pedidos</a>
+                <a
+                mat-menu-item
+                routerLink="/financeiro"
+                >Financeiro</a>
+                <a
+                mat-menu-item
+                routerLink="/notas"
+                >Notas Fiscais</a>
+            </mat-menu>
+        </mat-nav-list>
+        <mat-nav-list class="last">
+            <a mat-list-item routerLink="/imposto"><p>Imposto</p></a>
+            <a mat-list-item routerLink="/DRE"><p>DRE</p></a>
+        </mat-nav-list>
+        </section>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div *ngIf="screenSize!=='desktop'" class="header">
+            <header>
+                <div style="align-items: center; display: flex;">
+                    <button mat-icon-button (click)="opened = !opened" style="margin-left: 0px; margin-top: 0px;">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <span>Menu</span>
+                </div>
+            </header>
+        </div>
+        <div class="divTitulo">
+            <header class="underHeader" *ngIf="screenSize!=='desktop'"></header>
+            <h1 class="tituloPagina">{{pageTitle}}</h1>
+        </div>
+        <section class="pageContent">
+            <router-outlet></router-outlet>
+        </section>
+    </mat-drawer-content>
+</mat-drawer-container>

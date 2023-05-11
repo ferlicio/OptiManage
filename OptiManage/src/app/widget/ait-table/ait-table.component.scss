@@ -1,0 +1,89 @@
+$mobileTableMaxWidth: 750px;
+
+mat-list-item.tableHeader {
+    background-color: rgba(45, 45, 45, 0.1);
+}
+
+mat-list-item.registros {
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+            font-weight: 100;
+        } 
+    }
+}
+
+.mat-column-A--es{
+    text-align: end;
+}
+
+::ng-deep .mat-mdc-form-field-icon-suffix > .mat-icon {
+    scale: 1.6;
+    height: 16px;
+}
+
+span > mat-icon{
+    height: 14px;
+    margin-left: 10px;
+}
+
+table.data > tr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+table.data th {
+    text-align: left;
+}
+table.data {
+    width: 100%;
+}
+table.data > tr {
+    border-bottom: 3px solid rgba(1,1,1,0.05);
+    padding: 10px;
+}
+table.data > tr:nth-child(odd) {
+    background-color: rgb(190 190 190 / 15%)
+}
+table.tableMobile {
+    display: none;
+    font-size: initial;
+}
+
+div.noData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 0px 0px 20px 20px;
+    text-align: center;
+    span:first-child {
+        font-size: 30px;
+    }
+    span:last-child{
+        font-weight: 100;
+    }
+}
+
+tr.element-row:hover {
+    background-color: rgb(190 190 190 / 5%);
+}
+
+
+::ng-deep div.mat-mdc-menu-content button.actions mat-icon{
+    padding-left: 6px;
+    padding-top: 2px;
+}
+
+@media (max-width: $mobileTableMaxWidth) {
+    table.tableDesktop, mat-paginator.tableDesktop {
+        display: none;
+    }
+    table.tableMobile {
+        display: block;
+    }
+
+}

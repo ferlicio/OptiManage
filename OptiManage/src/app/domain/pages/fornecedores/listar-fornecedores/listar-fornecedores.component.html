@@ -1,0 +1,64 @@
+<section class="geral">
+    <button mat-raised-button color="primary" class="add" routerLink="/fornecedores/novo">
+        <span>Adicionar</span>
+    </button>
+    <button mat-fab color="primary" class="add mobile" routerLink="/fornecedores/novo">
+        <mat-icon>add</mat-icon>
+    </button>
+    <section class="pageContent">
+            <form action="" [formGroup]="filtroEPesquisa" class="tableSearch">
+                <div class="filterForTable">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Filtrar por</mat-label>
+                        <mat-select formControlName="filtro">
+                            <div *ngFor="let atributo of colunasVisiveis">
+                                <mat-option *ngIf="atributo!='Ações'" [value]="atributo">
+                                {{atributo}}
+                            </mat-option>
+                            </div>
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-flat-button color="warn" class="clearFilter"
+                    *ngIf="filtroEPesquisa.controls['filtro'].value!=''"
+                    (click)="filtroEPesquisa.controls['filtro'].setValue('')">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+                <button mat-fab [color]="filtroEPesquisa.controls['filtro'].value=='' ?'primary' :'warn'" 
+                [matMenuTriggerFor]="filter" class="buttonFilter">
+                    <mat-icon>filter_alt</mat-icon>
+                </button>
+                <mat-menu #filter="matMenu">
+                    <button mat-menu-item (click)="filtroEPesquisa.controls['filtro'].setValue('')" class="limparFiltros">Limpar filtro</button>
+                    <div *ngFor="let atributo of colunasVisiveis">
+                        <button mat-menu-item *ngIf="atributo!='Ações'"
+                        (click)="filtroEPesquisa.controls['filtro'].setValue(atributo)">
+                            <span><mat-icon *ngIf="filtroEPesquisa.controls['filtro'].value==atributo" class="filterSelectedItem">arrow_forward_ios</mat-icon>
+                                {{atributo}}
+                            </span>
+                        </button>
+                    </div>
+                </mat-menu>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Pesquisar</mat-label>
+                        <input matInput type="text" formControlName="pesquisa">
+                        <mat-icon matSuffix>search</mat-icon>
+                    </mat-form-field>
+                </div>
+            </form>
+            <ait-table
+                [tableSource]="fornecedores"
+                [tableColumns]="todasColunas"
+                [tableVisibleColumns]="colunasVisiveis"
+                [ColumnXPropertyEnum]="colunaXPropriedade"
+                [filterAndSearch]="filtroEPesquisa.valueChanges"
+                elementName="forncedor"
+                [paginatorInterval]="7"
+                [hasEdit]="true"
+                [hasDelete]="true"
+                (editFunction)="editEl($event)"
+                (deleteFunction)="deleteEl($event)"
+            ></ait-table>
+    </section>
+</section>

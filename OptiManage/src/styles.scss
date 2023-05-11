@@ -1,0 +1,69 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* select{
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    border-color: rgba(0, 0, 0, 0.080);
+} */
+/*/////////////////////////////////////configuração dos selects/////////////////////////////////////////*/
+:root {
+    --select-border: rgba(0, 0, 0, 0.080);
+    --select-focus: blue;
+    --select-arrow: rgba(0, 0, 0, 1);
+  }
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+}
+select::-ms-expand {
+    display: none;
+}
+.select {
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.75em;
+    font-size: 0.95rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+} 
+.select::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(50% 100%, 0 0, 15% 0, 50% 70%, 85% 0, 100% 0);
+}
+.select {
+    display: grid;
+}
+.select {
+    grid-template-areas: "select";
+}
+select,
+.select:after {
+    grid-area: select;
+}
+.select {
+    align-items: center;
+}
+.select:after {
+    justify-self: end;
+}
+
+
