@@ -1,3 +1,19 @@
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button,
+input[type=password]::-webkit-outer-spin-button,
+input[type=password]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input.number[type=number],input[type=password] {
+  -moz-appearance: textfield;
+  text-align: right;
+}
+input[type=password] {
+  text-align: left;
+}
+
 ::ng-deep span.formRadio > mat-radio-group > mat-radio-button label {
     padding-left: 0px; 
     padding-right:10px; 

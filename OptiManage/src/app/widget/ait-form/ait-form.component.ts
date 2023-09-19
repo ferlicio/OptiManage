@@ -8,16 +8,16 @@ import {
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 export interface FormField {
-  name?: string;            // nome do campo
-  type: FieldType;          // tipo do campo
-  formControlName: string;  // texto do formControlName
-  fieldPlaceholder?: string;// texto do placeholder
-  fieldFlexGrow?: number;   // flex-grow do campo
-  fieldMinWidth?: string;   // largura mínima do campo
-  fieldWidth?: string;      // largura do campo
-  options?: [string, string|null][]; // opções para campos do tipo 'select'
+  name?: string;                     // nome do campo
+  type: FieldType;                   // tipo do campo
+  formControlName: string;           // nome do formControlName
+  fieldPlaceholder?: string;         // texto do placeholder
+  fieldFlexGrow?: number;            // flex-grow do campo
+  fieldMinWidth?: string;            // largura mínima do campo
+  fieldWidth?: string;               // largura do campo
+  options?: [string, any][];         // opções para campos do tipo 'select'
 }
-type FieldType = "text" | "select" | "date" | "dateRange" | "radio" | "checkbox";
+type FieldType = "text" | "longText" | "number" | "select" | "date" | "radio" | "checkbox";
 export type FormFields = (FormField|undefined)[][];
 
 
@@ -98,7 +98,7 @@ export class AitFormComponent implements OnInit {
   ngOnInit(): void {
     this.formFieldsExample.forEach((row, i) => {
       row.forEach((field, j) => {
-        if (field?.formControlName.includes('select')) {
+        if (field?.formControlName.toLowerCase().includes('date')) {
           this.formgroup.addControl(field.formControlName, this.fb.control(null));
         }
       })
