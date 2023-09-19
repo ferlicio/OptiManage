@@ -1,0 +1,10 @@
+::ng-deep span.formRadio > mat-radio-group > mat-radio-button label {
+    padding-left: 0px; 
+    padding-right:10px; 
+    margin-left: -5px;
+}
+
+::ng-deep span.formCheckbox > mat-checkbox > div.mdc-form-field label {
+    padding-left: 0px; 
+    margin-left: 0px;
+}

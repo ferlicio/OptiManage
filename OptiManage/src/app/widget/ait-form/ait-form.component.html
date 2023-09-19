@@ -1,0 +1,74 @@
+<form [formGroup]="formgroupExample">
+    <div *ngFor="let row of formFieldsExample" style="display: flex; flex-wrap: wrap;" [ngStyle]="{'column-gap':columnGap+'px'}">
+        <span *ngFor="let field of row" [ngStyle]="{'flex-grow':field?.fieldFlexGrow,'min-width':field?.fieldMinWidth,'width':field?.fieldWidth}">
+            <section *ngIf="field!=undefined;">
+                <span *ngIf="field.type=='text'">
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
+                        <input matInput [type]="!field.formControlName.includes('password') ?'text' :'password'" formControlName="{{field.formControlName}}" 
+                            required="{{formgroup.controls[field.formControlName].invalid}}" placeholder="{{field.fieldPlaceholder}}">
+                    </mat-form-field>
+                </span>
+                <span *ngIf="field.type=='select'">
+                    <mat-form-field [ngStyle]="{'flex-grow':field.fieldFlexGrow,'min-width':field.fieldMinWidth}">
+                        <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
+                        <mat-select formControlName="{{field.formControlName}}" required="{{formgroup.controls[field.formControlName].invalid}}">
+                            <mat-option value="{{item[1]}}" *ngFor="let item of field.options">{{item[0]}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </span>
+                <span *ngIf="field.type=='date'">
+                    <mat-form-field [ngStyle]="{'flex-grow':field.fieldFlexGrow,'min-width':field.fieldMinWidth}">
+                        <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="{{field.formControlName}}" 
+                            required="{{formgroup.controls[field.formControlName].invalid}}">
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                </span>
+                <span *ngIf="field.type=='dateRange'">
+                    <mat-form-field [ngStyle]="{'flex-grow':field.fieldFlexGrow,'min-width':field.fieldMinWidth}">
+                        <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
+                        <mat-select formControlName="{{field.formControlName}}" required="{{formgroup.controls[field.formControlName].invalid}}">
+                            <mat-option value="{{item[1]}}" *ngFor="let item of field.options">{{item[0]}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+<!--                     <mat-form-field>
+                        <mat-label>Enter a date range</mat-label>
+                        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                          <input matStartDate formControlName="start" placeholder="Start date">
+                          <input matEndDate formControlName="end" placeholder="End date">
+                        </mat-date-range-input>
+                        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                      
+                        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                      </mat-form-field> -->
+                </span>
+                <span *ngIf="field.type=='radio'" style="display: flex; flex-direction: column;" class="formRadio">
+                    <label id="radio-group-label" style="margin-bottom: 1px;">{{field.name!='' ?field.name :'Field with no name'}}</label>
+                    <mat-radio-group
+                        formControlName="{{field.formControlName}}"
+                        aria-labelledby="radio-group-label"
+                        required="{{formgroup.controls[field.formControlName].invalid}}"
+                        style="margin-bottom: 20px;"
+                        class="radio-group"
+                        >
+                        <mat-radio-button class="radio-button" value="{{item[1]}}" *ngFor="let item of field.options">
+                            {{item[0]}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </span>
+                <span *ngIf="field.type=='checkbox'" class="formCheckbox">
+                    <mat-checkbox color="primary" formControlName="{{field.formControlName}}" 
+                        required="{{formgroup.controls[field.formControlName].invalid}}" style="margin-bottom: 22px; padding: 9px 0px;">
+                        {{field.name!='' ?field.name :'Field with no name'}}
+                    </mat-checkbox>
+                </span>
+            </section>
+        </span>
+    </div>
+</form>
