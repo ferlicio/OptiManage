@@ -7,6 +7,7 @@ import { FormServicoComponent } from './form-servico/form-servico.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AitTableModule } from 'src/app/widget/ait-table/ait-table.module';
+import { AitFormModule } from 'src/app/widget/ait-form/ait-form.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AitTableModule } from 'src/app/widget/ait-table/ait-table.module';
     MaterialModule,
     ReactiveFormsModule,
     AitTableModule,
+    AitFormModule
   ]
 })
 export class ServicosModule { }
