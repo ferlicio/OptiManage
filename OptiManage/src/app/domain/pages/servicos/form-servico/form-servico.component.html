@@ -3,7 +3,8 @@
         [formFields]="fieldsCadastroServico"
         [formgroup]="formCadastroServico"
     ></ait-form>
-    <button mat-raised-button class="saveButton" (click)="salvarServico()">
+    <button mat-raised-button [ngClass]="{'saveButton':formCadastroServico.valid}" 
+        (click)="salvarServico()" [disabled]="formCadastroServico.invalid" style="display: block; margin-left: auto">
         <mat-icon>save</mat-icon>
 
         Salvar
