@@ -4,14 +4,16 @@
     <div>
         <button mat-stroked-button [matMenuTriggerFor]="menu" #menuTrigger *ngIf="canChangeColumns">Colunas visiveis</button>
         <mat-menu #menu="matMenu">
-            <div *ngFor="let coluna of tableColumns">
-                <button mat-menu-item 
-                (click)="changeColumns(coluna)"
-                *ngIf="coluna!='Ações'">
-                    <mat-icon *ngIf="tableVisibleColumns.includes(coluna)">check</mat-icon>
-                    <span>{{coluna}}</span>
-                </button>
-            </div>
+            <ng-template matMenuContent>
+                <div *ngFor="let coluna of tableColumns">
+                    <button mat-menu-item 
+                    (click)="changeColumns(coluna)"
+                    *ngIf="coluna!='Ações'">
+                        <mat-icon *ngIf="tableVisibleColumns.includes(coluna)">check</mat-icon>
+                        <span>{{coluna}}</span>
+                    </button>
+                </div>
+            </ng-template>
         </mat-menu>
         <span></span>
         <span>{{tableData.data.length}} registros</span>
@@ -19,57 +21,59 @@
 </mat-list-item>
 <mat-divider></mat-divider>  
 <div *ngIf="this.tableData.data.length!=0">
-    <table mat-table matSort [dataSource]="tableData" class="mat-elevation-z8 tableDesktop" *ngIf="tableSource">
+    <section class="tableContainer" style="overflow-y: auto;">
+        <table mat-table matSort [dataSource]="tableData" class="mat-elevation-z8 tableDesktop" *ngIf="tableSource">
 
-        <div *ngFor="let coluna of tableVisibleColumns;let i = index">
-            <ng-container *ngIf="coluna!='Ações'" [matColumnDef]="coluna">
-                <th mat-header-cell *matHeaderCellDef [mat-sort-header]="TranslatedColumns[i]" [sortActionDescription]="'Sort by '+ coluna">
-                    <span>
-                        {{coluna}} 
-                    </span>
-                </th>
-                <td mat-cell *matCellDef="let element"> 
-                    {{element[TranslatedColumns[i]]}} 
-                </td>
-            </ng-container>
+            <div *ngFor="let coluna of tableVisibleColumns;let i = index">
+                <ng-container *ngIf="coluna!='Ações'" [matColumnDef]="coluna">
+                    <th mat-header-cell *matHeaderCellDef [mat-sort-header]="TranslatedColumns[i]" [sortActionDescription]="'Sort by '+ coluna">
+                        <span>
+                            {{coluna}} 
+                        </span>
+                    </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        {{element[TranslatedColumns[i]]}} 
+                    </td>
+                </ng-container>
 
-            <ng-container *ngIf="coluna=='Ações'" matColumnDef="Ações">
-                <th mat-header-cell *matHeaderCellDef> Ações </th>
-                <td mat-cell *matCellDef="let element">
-                    <div *ngIf="hasEdit&&hasDelete">
-                        <button mat-icon-button [matMenuTriggerFor]="belowMenu" class="editElement">
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-                        <mat-menu #belowMenu="matMenu" yPosition="below">
-                            <button mat-menu-item class="actions" (click)="editFunction.emit(element['id'])">
+                <ng-container *ngIf="coluna=='Ações'" matColumnDef="Ações">
+                    <th mat-header-cell *matHeaderCellDef> Ações </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div *ngIf="hasEdit&&hasDelete">
+                            <button mat-icon-button [matMenuTriggerFor]="belowMenu" class="editElement">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #belowMenu="matMenu" yPosition="below">
+                                <button mat-menu-item class="actions" (click)="editFunction.emit(element['id'])">
+                                    <mat-icon>edit</mat-icon>
+                                    <span>Editar</span>
+                                </button>
+                                <button mat-menu-item class="actions"(click)="confirmDelete(element['id'])">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Excluir</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                        <div *ngIf="hasEdit&&hasDelete==false">
+                            <button mat-icon-button class="actions" (click)="editFunction.emit(element['id'])">
                                 <mat-icon>edit</mat-icon>
-                                <span>Editar</span>
                             </button>
-                            <button mat-menu-item class="actions"(click)="confirmDelete(element['id'])">
+                        </div>
+                        <div *ngIf="hasDelete&&hasEdit==false">
+                            <button mat-icon-button class="actions"(click)="confirmDelete(element['id'])">
                                 <mat-icon>delete</mat-icon>
-                                <span>Excluir</span>
                             </button>
-                        </mat-menu>
-                    </div>
-                    <div *ngIf="hasEdit&&hasDelete==false">
-                        <button mat-icon-button class="actions" (click)="editFunction.emit(element['id'])">
-                            <mat-icon>edit</mat-icon>
-                        </button>
-                    </div>
-                    <div *ngIf="hasDelete&&hasEdit==false">
-                        <button mat-icon-button class="actions"(click)="confirmDelete(element['id'])">
-                            <mat-icon>delete</mat-icon>
-                        </button>
-                    </div>
-                </td>
-            </ng-container>
-        </div>
+                        </div>
+                    </td>
+                </ng-container>
+            </div>
 
-        <tr mat-header-row *matHeaderRowDef="tableVisibleColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: tableVisibleColumns;"
-            class="element-row"
-        ></tr>
-    </table>
+            <tr mat-header-row *matHeaderRowDef="tableVisibleColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: tableVisibleColumns;"
+                class="element-row"
+            ></tr>
+        </table>      
+    </section>
 
     <mat-paginator *ngIf="hasPaginator" [pageSizeOptions]="[paginatorInterval, paginatorInterval*2, paginatorInterval*3]"
         showFirstLastButtons
