@@ -3,8 +3,9 @@
         [formFields]="fieldsCadastroServico"
         [formgroup]="formCadastroServico"
     ></ait-form>
-    <button mat-raised-button class="saveButton">
+    <button mat-raised-button class="saveButton" (click)="salvarServico()">
         <mat-icon>save</mat-icon>
+
         Salvar
     </button>
 </section>
