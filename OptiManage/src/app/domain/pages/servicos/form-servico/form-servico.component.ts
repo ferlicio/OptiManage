@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FormFields } from 'src/app/widget/ait-form/ait-form.component';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form-servico',
@@ -30,14 +32,19 @@ export class FormServicoComponent {
   formCadastroServico: FormGroup = this.fb.group({
     nomeServico: ['',[Validators.required]],
     descricaoServico: [''],
-    costPrice: [''],
-    finalPrice: [''],
-    prazoEntrega: [''],
-    terceirizado: [''],
-    userPassword: [''],
+    costPrice: ['',[Validators.required]],
+    finalPrice: ['',[Validators.required]],
+    prazoEntrega: ['',[Validators.required]],
+    terceirizado: ['',[Validators.required]],
     termosECondicoes: [''],
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router:Router, private _snackBar: MatSnackBar) { }
 
+
+  salvarServico() {
+    console.log(this.formCadastroServico.value);
+    this._snackBar.open("Serviço salvo com sucesso", "fechar", {duration: 5000, panelClass: ['snackbar-success'], horizontalPosition: 'end'});
+    this.router.navigate(['/servicos']);
+  }
 }
