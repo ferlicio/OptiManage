@@ -14,7 +14,7 @@ import { ScreenSizeService } from 'src/shared/services/screen-size.service';
 export class ListarServicosComponent {
 
   screenSize!: string;
-  clientes: Servico[] = [
+  servicos: Servico[] = [
     {id:1, nome: 'Desenho Artistico', descricao:'', valor:'100,00'},
   ]
   colunasVisiveis: string[] = ['Nome', 'Descrição', 'Valor'];
@@ -39,12 +39,9 @@ export class ListarServicosComponent {
   }
 
   deleteEl(id: number) {
+    console.log(`Serviço a ser deletado: ${id}`);
     const dialogRef = this.dialog.open(ElementActionDialogComponent, {
-      data: {id: id, title: 'Excluir serviço', message: 'Você deseja mesmo excluir o serviço selecionado?'}
+      data: {title: 'Exclusão confirmada', message: 'Serviço excluido com sucesso'}
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) { console.log(`Serviço a ser deletado: ${result}`);}
-    })
   }
 }
