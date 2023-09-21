@@ -6,7 +6,7 @@
                     <mat-form-field appearance="fill" style="width: 100%;">
                         <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
                         <input matInput [type]="!field.formControlName.toLowerCase().includes('password') ?'text' :'password'"
-                            formControlName="{{field.formControlName}}" required="{{formgroup.controls[field.formControlName].invalid}}" 
+                            formControlName="{{field.formControlName}}" required="{{hasRequiredValidator(field.formControlName)}}" 
                             placeholder="{{field.fieldPlaceholder}}">
                     </mat-form-field>
                 </span>
@@ -14,7 +14,7 @@
                     <mat-form-field appearance="fill" style="width: 100%;">
                         <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
                         <textarea matInput [type]="!field.formControlName.includes('password') ?'text' :'password'" formControlName="{{field.formControlName}}" 
-                            required="{{formgroup.controls[field.formControlName].invalid}}" placeholder="{{field.fieldPlaceholder}}">
+                            required="{{hasRequiredValidator(field.formControlName)}}" placeholder="{{field.fieldPlaceholder}}">
                         </textarea>
                     </mat-form-field>
                 </span>
@@ -23,7 +23,7 @@
                     [floatLabel]="field.formControlName.toLowerCase().includes('price')?'always' :'auto'">
                         <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
                         <input matInput type="number" formControlName="{{field.formControlName}}" class="number"
-                            required="{{formgroup.controls[field.formControlName].invalid}}" placeholder="{{field.fieldPlaceholder}}">
+                            required="{{hasRequiredValidator(field.formControlName)}}" placeholder="{{field.fieldPlaceholder}}">
                                 <span matTextPrefix *ngIf="field.formControlName.toLowerCase().includes('price')">$&nbsp;</span>
                                 <span matTextSuffix *ngIf="field.formControlName.toLowerCase().includes('price')">.00</span>
                     </mat-form-field>
@@ -31,7 +31,7 @@
                 <span *ngIf="field.type=='select'">
                     <mat-form-field style="width: 100%;">
                         <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
-                        <mat-select formControlName="{{field.formControlName}}" required="{{formgroup.controls[field.formControlName].invalid}}">
+                        <mat-select formControlName="{{field.formControlName}}" required="{{hasRequiredValidator(field.formControlName)}}">
                             <mat-option value="{{item[1]}}" *ngFor="let item of field.options">{{item[0]}}</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -40,7 +40,7 @@
                     <mat-form-field style="width: 100%;">
                         <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
                         <input matInput [matDatepicker]="picker" formControlName="{{field.formControlName}}" 
-                            required="{{formgroup.controls[field.formControlName].invalid}}">
+                            required="{{hasRequiredValidator(field.formControlName)}}">
                         <mat-hint>DD/MM/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
@@ -51,7 +51,7 @@
                     <mat-radio-group
                         formControlName="{{field.formControlName}}"
                         aria-labelledby="radio-group-label"
-                        required="{{formgroup.controls[field.formControlName].invalid}}"
+                        required="{{hasRequiredValidator(field.formControlName)}}"
                         style="margin-bottom: 20px;"
                         class="radio-group"
                         >
@@ -62,7 +62,7 @@
                 </span>
                 <span *ngIf="field.type=='checkbox'" class="formCheckbox">
                     <mat-checkbox color="primary" formControlName="{{field.formControlName}}" 
-                        required="{{formgroup.controls[field.formControlName].invalid}}" style="margin-bottom: 22px; padding: 9px 0px;">
+                        required="{{hasRequiredValidator(field.formControlName)}}" style="margin-bottom: 22px; padding: 9px 0px;">
                         {{field.name!='' ?field.name :'Field with no name'}}
                     </mat-checkbox>
                 </span>

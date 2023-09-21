@@ -95,13 +95,10 @@ export class AitFormComponent implements OnInit {
     @Inject(MAT_DATE_LOCALE) private _locale: string,
   ) { }
 
+  hasRequiredValidator(formControlName: string): boolean {
+    return this.formgroup.controls[formControlName].hasValidator(Validators.required);
+  }
+
   ngOnInit(): void {
-    this.formFieldsExample.forEach((row, i) => {
-      row.forEach((field, j) => {
-        if (field?.formControlName.toLowerCase().includes('date')) {
-          this.formgroup.addControl(field.formControlName, this.fb.control(null));
-        }
-      })
-    })
   }
 }
