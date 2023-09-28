@@ -16,6 +16,10 @@ export interface FormField {
   fieldMinWidth?: string;            // largura mínima do campo
   fieldWidth?: string;               // largura do campo
   options?: [string, any][];         // opções para campos do tipo 'select'
+  validators?: availableValidators;  // validadores do campo
+}
+type availableValidators = {
+  maxLength?: number; maskPattern?: string;
 }
 type FieldType = "text" | "longText" | "number" | "select" | "date" | "radio" | "checkbox";
 export type FormFields = (FormField|undefined)[][];
@@ -40,9 +44,9 @@ export class AitFormComponent implements OnInit {
   @Input() columnGap: number = 20;
   @Input() formFields: FormFields = [];
   @Input() formgroup: FormGroup = this.fb.group({});
-  @Input() formgroupExample: FormGroup = this.fb.group({
-    name: ['',[Validators.required]],
-    surname: [''],
+  formgroupExample: FormGroup = this.fb.group({
+    name: [{value:'', disabled: true},[Validators.required]],
+    surname: ['', [Validators.maxLength(8)]],
     email: [''],
     userpassword: [''],
     concorda: [''],
@@ -52,12 +56,11 @@ export class AitFormComponent implements OnInit {
 
   formFieldsExample: FormFields = [
     [
-      { name: 'nome', type: 'text', formControlName: 'name', fieldFlexGrow: 2, fieldMinWidth: '200px'},
-      { name: 'sobrenome', type: 'text', formControlName: 'surname', fieldFlexGrow: 1},
+      { name: 'nome', type: 'text', formControlName: 'name', fieldFlexGrow: 2, fieldMinWidth: '200px', validators: {maskPattern: '000-000-000'}},
+      { name: 'sobrenome', type: 'text', formControlName: 'surname', fieldFlexGrow: 1, validators: {maxLength: 8}},
     ],
     [
-      { name: 'email', type: 'text', formControlName: 'email', fieldWidth: '100%'},
-      { name: 'senha', type: 'date', formControlName: 'userpassword', fieldWidth: '100%'},
+      { name: 'senha', type: 'text', formControlName: 'userpassword', fieldWidth: '100%'},
     ],
     [
       { name: 'concordo com as regras', type: 'checkbox', formControlName: 'concorda', fieldWidth: '40%'},
