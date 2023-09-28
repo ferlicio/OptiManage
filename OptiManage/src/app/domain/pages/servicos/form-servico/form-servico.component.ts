@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormFields } from 'src/app/widget/ait-form/ait-form.component';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
@@ -9,7 +9,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
   templateUrl: './form-servico.component.html',
   styleUrls: ['./form-servico.component.scss']
 })
-export class FormServicoComponent {
+export class FormServicoComponent implements OnInit {
 
   fieldsCadastroServico: FormFields = [
     [
@@ -38,13 +38,31 @@ export class FormServicoComponent {
     terceirizado: ['',[Validators.required]],
     termosECondicoes: [''],
   })
+  queryParams: any;
+  isEditing: boolean = false;
 
-  constructor(private fb: FormBuilder, private router:Router, private _snackBar: MatSnackBar) { }
+  constructor(private fb: FormBuilder, private router:Router, private _snackBar: MatSnackBar, private route: ActivatedRoute) { }
 
 
   salvarServico() {
     console.log(this.formCadastroServico.value);
-    this._snackBar.open("Serviço salvo com sucesso", "fechar", {duration: 5000, panelClass: ['snackbar-success'], horizontalPosition: 'end'});
+    this._snackBar.open("Serviço "+ (this.isEditing?"editado":"salvo") +" com sucesso", "fechar", {duration: 5000, panelClass: ['snackbar-success'], horizontalPosition: 'end'});
     this.router.navigate(['/servicos']);
+  }
+  editarServico() {
+    this.isEditing = true;
+    this.formCadastroServico.enable();
+  }
+  
+  ngOnInit(): void {
+    this.route.url.subscribe(url => {
+      if (url[0].path == 'editar') {
+        this.formCadastroServico.disable()
+        this.route.queryParams.subscribe(params => {
+          this.queryParams = params;
+        })
+      }
+    })
+
   }
 }
