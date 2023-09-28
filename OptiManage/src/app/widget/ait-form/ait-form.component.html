@@ -5,8 +5,7 @@
                 <span *ngIf="field.type=='text'">
                     <mat-form-field appearance="fill" style="width: 100%;">
                         <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
-                        <input matInput [type]="!field.formControlName.toLowerCase().includes('password') 
-                            ?'text' :'password'"
+                        <input matInput [type]="!field.formControlName.toLowerCase().includes('password') ?'text' :'password'"
                             formControlName="{{field.formControlName}}" required="{{hasRequiredValidator(field.formControlName)}}" 
                             placeholder="{{field.fieldPlaceholder}}" 
                             maxlength="{{field.validators?.maxLength!=undefined ?field.validators?.maxLength :null}}"
