@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 
 //material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatBadgeModule } from '@angular/material/badge'
 import { MatButtonModule } from '@angular/material/button'
@@ -37,8 +38,13 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatTreeModule } from '@angular/material/tree'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatNativeDateModule } from '@angular/material/core'
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
+  imports: [
+    NgxMaskDirective, 
+    NgxMaskPipe,
+  ],
   exports: [
     MatAutocompleteModule,
     MatBadgeModule,
@@ -76,7 +82,10 @@ import { MatNativeDateModule } from '@angular/material/core'
     MatTreeModule,
     MatTooltipModule,
     MatNativeDateModule,
+    NgxMaskDirective, 
+    NgxMaskPipe,
   ],
+  providers: [provideNgxMask()],
 })
 export class MaterialModule {
 
