@@ -1,1 +1,39 @@
-<p>form-fornecedor works!</p>
+<section class="geral">
+    <div class="titulo">
+        <h3 class="titulo">Dados do Fornecedor</h3>
+        <div class="separador"></div>
+        <button mat-raised-button color="primary" (click)="editarFornecedor()" *ngIf="queryParams?.id"
+            [disabled]="isEditing" style="margin-left: auto">
+            <mat-icon>save</mat-icon>
+            {{!isEditing ? 'editar' : ' editando... '}}
+        </button>
+    </div>
+    <ait-form
+        [formFields]="fieldsCadastroFornecedorPrincipal"
+        [formgroup]="formCadastroFornecedor"
+    ></ait-form>
+
+    <div class="titulo">
+        <h3 class="titulo">Endereço</h3>
+        <div class="separador"></div>
+    </div>
+    <ait-form
+        [formFields]="fieldsCadastroFornecedorEndereco"
+        [formgroup]="formCadastroFornecedor"
+    ></ait-form>
+
+    <div class="titulo">
+        <h3 class="titulo">Contato</h3>
+        <div class="separador"></div>
+    </div>
+    <ait-form
+        [formFields]="fieldsCadastroFornecedorContato"
+        [formgroup]="formCadastroFornecedor"
+    ></ait-form>
+    <button mat-raised-button [ngClass]="{'saveButton':formCadastroFornecedor.valid}" 
+        (click)="salvarFornecedor()" *ngIf="!formCadastroFornecedor.disabled" style="display: block; margin-left: auto"
+        [disabled]="formCadastroFornecedor.invalid||formCadastroFornecedor.disabled">
+        <mat-icon>save</mat-icon>
+        Salvar
+    </button>
+</section>

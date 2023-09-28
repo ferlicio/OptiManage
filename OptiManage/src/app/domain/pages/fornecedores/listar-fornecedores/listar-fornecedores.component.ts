@@ -15,15 +15,15 @@ export class ListarFornecedoresComponent {
 
   screenSize!: string;
   fornecedores: Fornecedor[] = [
-    {id:1, tipo:'agencia', nome: 'Arriba', cnpj: '123.456.789-00', email: 'teste', website: '', telefone:'', idAtuacao: 0},
-    {id:1, tipo:'agencia', nome: 'Toshiba', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAtuacao: 0},
-    {id:1, tipo:'agencia', nome: 'Toboe', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAtuacao: 0},
-    {id:1, tipo:'agencia', nome: 'Andale', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAtuacao: 0},
-    {id:1, tipo:'agencia', nome: 'Xiaomi', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAtuacao: 0},
-    {id:1, tipo:'agencia', nome: 'Lenovo', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAtuacao: 0},
-    {id:1, tipo:'agencia', nome: 'Redragon', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAtuacao: 0},
-    {id:1, tipo:'agencia', nome: 'Trident', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAtuacao: 0},
-    {id:1, tipo:'agencia', nome: 'Ibis', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAtuacao: 0},
+    {id:1, tipo:'agencia', razaoSocial:'', nomeFantasia: 'Arriba', cnpj: '123.456.789-00', email: 'teste', website: '', telefone:'', idAreaAtuacao: 0},
+    {id:1, tipo:'agencia', razaoSocial:'', nomeFantasia: 'Toshiba', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAreaAtuacao: 0},
+    {id:1, tipo:'agencia', razaoSocial:'', nomeFantasia: 'Toboe', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAreaAtuacao: 0},
+    {id:1, tipo:'agencia', razaoSocial:'', nomeFantasia: 'Andale', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAreaAtuacao: 0},
+    {id:1, tipo:'agencia', razaoSocial:'', nomeFantasia: 'Xiaomi', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAreaAtuacao: 0},
+    {id:1, tipo:'agencia', razaoSocial:'', nomeFantasia: 'Lenovo', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAreaAtuacao: 0},
+    {id:1, tipo:'agencia', razaoSocial:'', nomeFantasia: 'Redragon', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAreaAtuacao: 0},
+    {id:1, tipo:'agencia', razaoSocial:'', nomeFantasia: 'Trident', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAreaAtuacao: 0},
+    {id:1, tipo:'agencia', razaoSocial:'', nomeFantasia: 'Ibis', cnpj: '123.456.789-00', email: '', website: '', telefone:'', idAreaAtuacao: 0},
   ]
   colunasVisiveis: string[] = ['Nome', 'CNPJ', 'Email', 'Website', 'Telefone', 'Area de atuação'];
   todasColunas: string[] = [...this.colunasVisiveis, 'Tipo', 'Contato'];

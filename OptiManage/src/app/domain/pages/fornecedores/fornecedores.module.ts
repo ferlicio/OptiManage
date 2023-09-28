@@ -7,6 +7,7 @@ import { ListarFornecedoresComponent } from './listar-fornecedores/listar-fornec
 import { ReactiveFormsModule } from '@angular/forms';
 import { AitTableModule } from 'src/app/widget/ait-table/ait-table.module';
 import { MaterialModule } from 'src/app/material/material.module';
+import { AitFormModule } from 'src/app/widget/ait-form/ait-form.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MaterialModule } from 'src/app/material/material.module';
     MaterialModule,
     ReactiveFormsModule,
     AitTableModule,
+    AitFormModule,
   ]
 })
 export class FornecedoresModule { }

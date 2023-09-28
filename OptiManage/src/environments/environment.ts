@@ -38,7 +38,27 @@ export const environment = {
 
         '/imposto': appName +" | "+ 'Imposto',
         '/DRE': appName +" | "+ 'DRE',
-    } as {[key: string]: string}
+    } as {[key: string]: string},
+    optimanageApi: {
+        baseUrl: 'http://localhost:3000',
+        endpoints: {
+            clientes: '/clientes',
+            fornecedores: '/fornecedores',
+            servicos: '/servicos',
+        }
+    },
+    otherApis: {
+        viacep: {
+            baseUrl: 'http://viacep.com.br/ws',
+        },
+        speedio: {
+            baseUrl: 'https://api-publica.speedio.com.br/buscarcnpj',
+        },
+        IBGE: {
+            baseUrl: 'https://servicodados.ibge.gov.br/api/v1/localidades',
+        }
+    }
+
 }
 
 export const baseEnvironment = environment;
