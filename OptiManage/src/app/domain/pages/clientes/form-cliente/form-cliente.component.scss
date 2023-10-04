@@ -1,11 +1,30 @@
-/* *{
-    font-size: 14px;
-} */
-
 section.geral {
     padding: 20px;
-    section.pageContent {
-        margin-top: 30px;
-        border-radius: 5px;
+    div.titulo {
+        display: flex;
+        h3.titulo {
+            min-width: fit-content; 
+            padding: 20px; 
+            padding-top: 10px;
+            padding-left: 10px;
+            margin: 0;
+        }
+        div.separador {
+            background-color: rgba(0, 0, 0, 0.08); 
+            height: 2px; 
+            width: 100%; 
+            align-self: center; 
+            margin-right: 20px;
+        }
+        button.edit {
+            margin-left: auto; 
+            min-width: -moz-fit-content; 
+            min-width: fit-content;
+        }
     }
+}
+
+button.saveButton {
+    background-color: rgb(30, 150, 0); 
+    color: white;
 }

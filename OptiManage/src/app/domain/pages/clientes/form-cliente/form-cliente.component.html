@@ -1,203 +1,38 @@
 <section class="geral">
-    <button mat-raised-button color="primary" *ngIf="true">
-        <span>Editar</span>
-    </button>
-    <section class="pageContent">
-        <form action="" [formGroup]="formCliente">
-            <h3>Dados gerais</h3>
-            <hr>
-            <div class="fields" style="padding: 10px;">
-              <div class="firstLine">
-                <mat-form-field appearance="fill">
-                  <mat-label>Categoria</mat-label>
-                  <mat-select formControlName="categoriaAtividade">
-                    <mat-option [value]="categoria" 
-                    *ngFor="let categoria of categoriasAtividade"
-                    >{{categoria}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
+  <div class="titulo">
+      <h3 class="titulo">Dados do Cliente</h3>
+      <div class="separador"></div>
+      <button mat-raised-button color="primary" (click)="editarCliente()" *ngIf="queryParams?.id"
+          [disabled]="isEditing" class="edit">
+          {{!isEditing ? 'editar' : ' editando... '}}
+      </button>
+  </div>
+  <ait-form
+      [formFields]="fieldsClientePrincipal"
+      [formgroup]="formCliente"
+  ></ait-form>
 
-                <mat-form-field appearance="fill" *ngIf="ramoAtividades.length>0">
-                  <mat-label>Ramo de Atividade</mat-label>
-                  <mat-select formControlName="ramoAtividade">
-                    <mat-option [value]="ramoAtividade" 
-                    *ngFor="let ramoAtividade of ramoAtividades"
-                    >{{ramoAtividade}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                
-                <mat-form-field appearance="fill" *ngIf="subCategorias.length>0">
-                  <mat-label>Sub Categoria</mat-label>
-                  <mat-select formControlName="subCategoria">
-                    <mat-option [value]="subCategoria" 
-                    *ngFor="let subCategoria of subCategorias"
-                    >{{subCategoria}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
+  <div class="titulo">
+      <h3 class="titulo">Endereço</h3>
+      <div class="separador"></div>
+  </div>
+  <ait-form
+      [formFields]="fieldsClienteEndereco"
+      [formgroup]="formCliente"
+  ></ait-form>
 
-              <div class="secondLine">
-                <mat-form-field appearance="fill">
-                  <mat-label>Razão Social</mat-label>
-                  <input
-                    type="text"
-                    placeholder="Ex: João Pedro"
-                    matInput
-                    formControlName="razaoSocial"
-                  >
-                </mat-form-field>
-                
-                <mat-form-field appearance="fill">
-                  <mat-label>Nome Fantasia</mat-label>
-                  <input
-                    type="text"
-                    placeholder="Ex: João Pedro"
-                    matInput
-                    formControlName="nome"
-                  >
-                </mat-form-field>
-              </div>
-
-              <div class="thirdLine">
-                <mat-form-field appearance="fill">
-                  <mat-label>CPF / CNPJ</mat-label>
-                  <input
-                    type="text"
-                    placeholder="Ex: João Pedro"
-                    matInput
-                    formControlName="cpfj"
-                  >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Inscrição Estadual</mat-label>
-                  <input
-                    type="text"
-                    placeholder="Ex: João Pedro"
-                    matInput
-                    formControlName="inscricaoEstadual"
-                  >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Inscrição Municipal</mat-label>
-                  <input
-                    type="text"
-                    placeholder="Ex: João Pedro"
-                    matInput
-                    formControlName="inscricaoMunicipal"
-                  >
-                </mat-form-field>
-              </div>
-
-              <div class="forthLine">
-                <mat-form-field appearance="fill">
-                  <mat-label>Site</mat-label>
-                  <input
-                    type="email"
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="site"
-                  >
-                </mat-form-field>
-                
-                <mat-form-field appearance="fill">
-                  <mat-label>Telefone</mat-label>
-                  <input
-                    type="email"
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="telefone"
-                  >
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                  <mat-label>E-mail</mat-label>
-                  <input
-                    type="tel"
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="email"
-                  >
-                </mat-form-field>
-              </div>
-
-              <div class="fifthLine">
-                <mat-form-field appearance="fill">
-                  <mat-label>CEP</mat-label>
-                  <input
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="cep"
-                    maxlength="8"
-                    mask="00000-000"
-                  >
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                  <mat-label>Cidade</mat-label>
-                  <input
-                    type="tel"
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="cidade"
-                  >
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                  <mat-label>Estado</mat-label>
-                  <input
-                    type="tel"
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="estado"
-                  >
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                  <mat-label>Endereço</mat-label>
-                  <input
-                    type="tel"
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="endereco"
-                  >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Numero</mat-label>
-                  <input
-                    type="tel"
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="numero"
-                  >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Complemento</mat-label>
-                  <input
-                    type="tel"
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="complemento"
-                  >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Bairro</mat-label>
-                  <input
-                    type="tel"
-                    placeholder="Ex: seuemail@mail.com"
-                    matInput
-                    formControlName="bairro"
-                  >
-                </mat-form-field>
-              </div>
-
-                  <mat-form-field appearance="fill">
-                    <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-            </div>
-        </form>
-    </section>
-</section> 
+  <div class="titulo">
+      <h3 class="titulo">Contato</h3>
+      <div class="separador"></div>
+  </div>
+  <ait-form
+      [formFields]="fieldsClienteContato"
+      [formgroup]="formCliente"
+  ></ait-form>
+  <button mat-raised-button [ngClass]="{'saveButton':formCliente.valid}" 
+      (click)="salvarCliente()" *ngIf="!formCliente.disabled" style="display: block; margin-left: auto"
+      [disabled]="formCliente.invalid||formCliente.disabled">
+      <mat-icon>save</mat-icon>
+      Salvar
+  </button>
+</section>
