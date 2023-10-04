@@ -25,7 +25,8 @@
                     <mat-form-field appearance="fill" style="width: 100%;" 
                     [floatLabel]="field.formControlName.toLowerCase().includes('price')?'always' :'auto'">
                         <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
-                        <input matInput type="number" formControlName="{{field.formControlName}}" class="number"
+                        <input matInput type="number" formControlName="{{field.formControlName}}" class="number" 
+                            [ngClass]="{'price':field.formControlName.toLowerCase().includes('price')}"
                             required="{{hasRequiredValidator(field.formControlName)}}" placeholder="{{field.fieldPlaceholder}}">
                                 <span matTextPrefix *ngIf="field.formControlName.toLowerCase().includes('price')">$&nbsp;</span>
                                 <span matTextSuffix *ngIf="field.formControlName.toLowerCase().includes('price')">.00</span>
@@ -44,7 +45,6 @@
                         <mat-label>{{field.name!='' ?field.name :'Field with no name'}}</mat-label>
                         <input matInput [matDatepicker]="picker" formControlName="{{field.formControlName}}" 
                             required="{{hasRequiredValidator(field.formControlName)}}">
-                        <mat-hint>DD/MM/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>

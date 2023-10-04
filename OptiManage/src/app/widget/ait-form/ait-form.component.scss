@@ -6,7 +6,7 @@ input[type=password]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input.number[type=number],input[type=password] {
+input.number.price[type=number] {
   -moz-appearance: textfield;
   text-align: right;
 }
