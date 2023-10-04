@@ -16,6 +16,11 @@ section.geral {
             align-self: center; 
             margin-right: 20px;
         }
+        button.edit {
+            margin-left: auto; 
+            min-width: -moz-fit-content; 
+            min-width: fit-content;
+        }
     }
 }
 
