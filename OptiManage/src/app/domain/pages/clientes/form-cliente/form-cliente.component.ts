@@ -4,9 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteApiService } from 'src/app/core/services/api/cliente/cliente.api.service';
 import { FormField, FormFields } from 'src/app/widget/ait-form/ait-form.component';
-import { CategoriaAtividade, RamoAtividade, SubCategoriasServico } from 'src/shared/models/areaAtuacao';
 import { CNAE, classeDoGrupo, estado, grupoDoCNAE } from 'src/shared/models/dadosIBGE';
-import { CepService } from 'src/shared/services/cep.service';
 import { ibgeService } from 'src/shared/services/ibge.service';
 import { ValidacoesService } from 'src/shared/services/validacoes.service';
 
@@ -16,10 +14,6 @@ import { ValidacoesService } from 'src/shared/services/validacoes.service';
   styleUrls: ['./form-cliente.component.scss'],
 })
 export class FormClienteComponent implements OnInit{
-
-  categoriasAtividade = CategoriaAtividade;
-  ramoAtividades: string[] = [];
-  subCategorias: string[] = [];
 
   constructor(
     private fb: FormBuilder, private router:Router, 
