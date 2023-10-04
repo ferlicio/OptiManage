@@ -49,7 +49,7 @@ export const environment = {
     },
     otherApis: {
         viacep: {
-            baseUrl: 'http://viacep.com.br/ws',
+            baseUrl: 'https://viacep.com.br/ws',
         },
         speedio: {
             baseUrl: 'https://api-publica.speedio.com.br/buscarcnpj',

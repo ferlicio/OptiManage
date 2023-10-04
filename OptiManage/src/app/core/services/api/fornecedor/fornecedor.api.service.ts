@@ -10,8 +10,6 @@ import { CepService } from 'src/shared/services/cep.service';
   providedIn: 'root'
 })
 export class FornecedorApiService {
-  readonly CNPJ_EXTENSION = 'receitaws';
-  readonly GET_ADDRESS_EXTENSION = 'getaddress'
   readonly BASE_URL = environment.optimanageApi.baseUrl;
   readonly VIA_CEP_BASEURL = environment.otherApis.viacep.baseUrl;
   readonly RECEITA_WS_BASEURL = environment.otherApis.speedio.baseUrl;
