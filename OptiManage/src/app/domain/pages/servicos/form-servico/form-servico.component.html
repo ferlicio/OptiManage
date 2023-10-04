@@ -3,17 +3,16 @@
         <h3 class="titulo">Dados do serviço</h3>
         <div class="separador"></div>
         <button mat-raised-button color="primary" (click)="editarServico()" *ngIf="queryParams?.id"
-            [disabled]="isEditing" style="margin-left: auto">
-            <mat-icon>save</mat-icon>
+            [disabled]="isEditing" class="edit">
             {{!isEditing ? 'editar' : ' editando... '}}
         </button>
     </div>
     <ait-form
-        [formFields]="fieldsCadastroServico"
-        [formgroup]="formCadastroServico"
+        [formFields]="fieldsServico"
+        [formgroup]="formServico"
     ></ait-form>
-    <button mat-raised-button [ngClass]="{'saveButton':formCadastroServico.valid}" (click)="salvarServico()" *ngIf="!formCadastroServico.disabled"
-        [disabled]="formCadastroServico.invalid||formCadastroServico.disabled" style="display: block; margin-left: auto">
+    <button mat-raised-button [ngClass]="{'saveButton':formServico.valid}" (click)="salvarServico()" *ngIf="!formServico.disabled"
+        [disabled]="formServico.invalid||formServico.disabled" style="display: block; margin-left: auto">
         <mat-icon>save</mat-icon>
         Salvar
     </button>

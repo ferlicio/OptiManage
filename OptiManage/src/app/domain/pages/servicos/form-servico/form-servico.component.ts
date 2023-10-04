@@ -11,7 +11,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 })
 export class FormServicoComponent implements OnInit {
 
-  fieldsCadastroServico: FormFields = [
+  fieldsServico: FormFields = [
     [
       { name: 'Nome do serviço', type: 'text', formControlName: 'nomeServico', fieldWidth: '100%'},
       { name: 'Descrição do serviço', type: 'longText', formControlName: 'descricaoServico', fieldWidth: '100%'},
@@ -29,7 +29,7 @@ export class FormServicoComponent implements OnInit {
     ],
   ]
 
-  formCadastroServico: FormGroup = this.fb.group({
+  formServico: FormGroup = this.fb.group({
     nomeServico: ['',[Validators.required]],
     descricaoServico: [''],
     costPrice: ['',[Validators.required]],
@@ -45,19 +45,19 @@ export class FormServicoComponent implements OnInit {
 
 
   salvarServico() {
-    console.log(this.formCadastroServico.value);
+    console.log(this.formServico.value);
     this._snackBar.open("Serviço "+ (this.isEditing?"editado":"salvo") +" com sucesso", "fechar", {duration: 5000, panelClass: ['snackbar-success'], horizontalPosition: 'end'});
     this.router.navigate(['/servicos']);
   }
   editarServico() {
     this.isEditing = true;
-    this.formCadastroServico.enable();
+    this.formServico.enable();
   }
   
   ngOnInit(): void {
     this.route.url.subscribe(url => {
       if (url[0].path == 'editar') {
-        this.formCadastroServico.disable()
+        this.formServico.disable()
         this.route.queryParams.subscribe(params => {
           this.queryParams = params;
         })
