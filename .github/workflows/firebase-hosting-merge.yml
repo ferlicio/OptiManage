@@ -26,6 +26,6 @@ jobs:
           firebase --version
       - name: Deploy to Firebase
         run: |
-          echo '${{secrets.FIREBASE_SERVICE_ACCOUNT_OPTIMANAGE}}' > $HOME/gcloud-service-key.json
+          echo '${{secrets.FIREBASE_SERVICE_ACCOUNT_OPTIMANAGE_AIT}}' > $HOME/gcloud-service-key.json
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/gcloud-service-key.json"
           firebase deploy --only hosting
