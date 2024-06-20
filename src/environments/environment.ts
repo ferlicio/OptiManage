@@ -48,6 +48,13 @@ export const environment = {
         }
     },
     otherApis: {
+        optimanageApiAWS: {
+            baseUrl: 'https://isg9kqleh3.execute-api.us-east-2.amazonaws.com/default',
+            endpoints: {
+                getCNPJInfo: '/getcnpjinfo',
+            },
+            authorizationToken: 'Bq6LFvnHas4IATTGQfxUQ3gEigEGvNGp4jhhnkiT'
+        },
         viacep: {
             baseUrl: 'https://viacep.com.br/ws',
         },

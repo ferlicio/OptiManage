@@ -12,7 +12,7 @@ import { CepService } from 'src/shared/services/cep.service';
 export class FornecedorApiService {
   readonly BASE_URL = environment.optimanageApi.baseUrl;
   readonly VIA_CEP_BASEURL = environment.otherApis.viacep.baseUrl;
-  readonly RECEITA_WS_BASEURL = environment.otherApis.speedio.baseUrl;
+  readonly OPTIMANAGE_API = environment.otherApis.optimanageApiAWS;
 
 
   constructor(
@@ -25,7 +25,14 @@ export class FornecedorApiService {
   }
   getCNPJ(cnpj: string): Observable<speedioConsultaCNPJ> {
     return this.http.get<speedioConsultaCNPJ>(
-      `${this.RECEITA_WS_BASEURL}?cnpj=${cnpj}`      
+      `${this.OPTIMANAGE_API.baseUrl + this.OPTIMANAGE_API.endpoints.getCNPJInfo}?cnpj=${cnpj}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Authorization': 'Bq6LFvnHas4IATTGQfxUQ3gEigEGvNGp4jhhnkiT'
+        }
+      }
     );
   }
 }
